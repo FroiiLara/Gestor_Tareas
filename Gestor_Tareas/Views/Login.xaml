@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             x:Class="Gestor_Tareas.Views.Login"
+             BackgroundColor="LightGreen"
+             Title="Iniciar sesión">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!-- Título -->
+            <Label Text="Bienvenido"
+                   FontSize="55"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Blue"
+                   FontFamily="Santa"
+                   FontAttributes="Bold" />
+
+            <!-- Campo de Usuario -->
+            <telerik:RadEntry x:Name="usernameEntry"
+                              Placeholder="Usuario"
+                              FontSize="16"
+                              TextColor="Black"
+                              BackgroundColor="White"
+                              Padding="10" />
+
+            <!-- Campo de Contraseña -->
+            <telerik:RadEntry x:Name="passwordEntry"
+                              Placeholder="Contraseña"
+                              FontSize="16"
+                              IsPassword="True"
+                              TextColor="Black"
+                              BackgroundColor="White"
+                              Padding="10" />
+
+            <!-- Botón de Iniciar sesión -->
+            <telerik:RadButton Text="Iniciar sesión"
+                               Clicked="OnLoginClicked"
+                               BackgroundColor="Green"
+                               TextColor="White"
+                               FontSize="16"
+                               HorizontalOptions="FillAndExpand" 
+                               Padding="10" />
+
+            <!-- Enlace de Recuperar Contraseña -->
+            <Label Text="¿Olvidaste tu contraseña?"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   TextColor="Blue"
+                   FontSize="14">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
+
+
+    

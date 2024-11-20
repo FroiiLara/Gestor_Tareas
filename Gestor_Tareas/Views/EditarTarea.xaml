@@ -1,0 +1,105 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestor_Tareas.Views.EditarTarea"
+             BackgroundColor="LightGreen"
+             Title="Editar Tarea">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Fila 0: Formulario de la tarea -->
+            <RowDefinition Height="*" />
+            <!-- Fila 1: Botones de navegación -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Fila 0: Formulario -->
+        <VerticalStackLayout Grid.Row="0" Padding="20" Spacing="20">
+            <!-- Nombre de la tarea -->
+            <Label Text="{Binding Tarea.NombreTarea}" 
+                   FontSize="30" 
+                   TextColor="Blue"
+                   FontAttributes="Bold"
+                   FontFamily="Comic"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="5"/>
+
+            <!-- Prioridad -->
+            <Label Text="Prioridad" FontSize="16" TextColor="Green"/>
+            <Label Text="{Binding Tarea.Prioridad}" 
+                   FontSize="16" TextColor="Orange" 
+                   FontAttributes="Bold"/>
+
+            <!-- Estado de la tarea -->
+            <Label Text="Estado" FontSize="16" TextColor="Green"/>
+            <telerik:RadComboBox x:Name="EstadoComboBox"
+                                 ItemsSource="{Binding Estados}"
+                                 SelectedItem="{Binding Tarea.Estado}"
+                                 SelectionChanged="EstadoComboBox_SelectionChanged" 
+                                 BackgroundColor="White"/>
+                                 
+
+            <!-- Comentarios -->
+            <Label Text="Comentarios" FontSize="16" TextColor="Green"/>
+            <telerik:RadEntry x:Name="ComentariosEditor" 
+                              Text="{Binding Tarea.Comentarios}" 
+                              HeightRequest="100" 
+                              BackgroundColor="White"
+                              Margin="5"/>
+
+            <!-- Botón para guardar cambios -->
+            <telerik:RadButton x:Name="guardarcambios"
+                               Text="Guardar cambios" 
+                               BackgroundColor="Green"
+                               HorizontalOptions="Center"
+                               TextColor="White"
+                               Command="{Binding GuardarCambiosCommand}" />
+        </VerticalStackLayout>
+
+        <!-- Fila 1: Botones de navegación -->
+        <Grid Grid.Row="1" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Botón Home -->
+            <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="home.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnHomeClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Inicio" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+
+            <!-- Botón Crear Tarea -->
+            <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="crear_tarea.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnCrearTareaClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Crear Tarea" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+
+            <!-- Botón Programador -->
+            <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="programador.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnProgramadorClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Programador" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

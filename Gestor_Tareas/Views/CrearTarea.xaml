@@ -1,0 +1,179 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="Gestor_Tareas.Views.CrearTarea"
+             BackgroundColor="LightGreen"
+             Title="Crear Tarea">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <Label 
+                    Text="Crear Tarea"
+                    FontSize="55"
+                    TextColor="Blue"
+                    FontFamily="Comic"
+                    HorizontalOptions="Center" />
+
+                <!-- Entrada de texto para el nombre de la tarea -->
+                <Label 
+                    Text="Nombre de la tarea:" 
+                    TextColor="Green"
+                    FontSize="16"
+                    FontAttributes="Bold"/>
+
+                <telerik:RadEntry 
+                    x:Name="NombreTareaEntry"
+                    Placeholder="Ingresa el nombre de la tarea"
+                    FontSize="16"
+                    Background="White"
+                    HorizontalOptions="FillAndExpand" />
+
+                <!-- RadComboBox para seleccionar la persona asignada -->
+                <StackLayout>
+                    <Label 
+                        Text="Seleccionar la persona asignada:" 
+                        TextColor="Green"
+                        FontSize="16"
+                        FontAttributes="Bold"/>
+                    <telerik:RadComboBox x:Name="PersonaAsignadaComboBox" BackgroundColor="White">
+                        <telerik:RadComboBox.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Froylan Grimaldo</x:String>
+                                <x:String>Rogelio Perez</x:String>
+                                <x:String>Otro</x:String>
+                            </x:Array>
+                        </telerik:RadComboBox.ItemsSource>
+                    </telerik:RadComboBox>
+                </StackLayout>
+
+                <!-- RadComboBox para seleccionar la prioridad -->
+                <StackLayout>
+                    <Label 
+                        Text="Selecciona la prioridad:" 
+                        TextColor="Green"
+                        FontSize="16"
+                        FontAttributes="Bold"/>
+                    <telerik:RadComboBox x:Name="PrioridadComboBox" BackgroundColor="White">
+                        <telerik:RadComboBox.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Alta</x:String>
+                                <x:String>Media</x:String>
+                                <x:String>Baja</x:String>
+                            </x:Array>
+                        </telerik:RadComboBox.ItemsSource>
+                    </telerik:RadComboBox>
+                </StackLayout>
+
+                <!-- RadComboBox para seleccionar la categoría -->
+                <StackLayout>
+                    <Label 
+                        Text="Seleccionar la categoría:" 
+                        TextColor="Green"
+                        FontSize="16"
+                        FontAttributes="Bold"/>
+                    <telerik:RadComboBox x:Name="CategoriaComboBox" BackgroundColor="White">
+                        <telerik:RadComboBox.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Desarrollo</x:String>
+                                <x:String>Soporte</x:String>
+                                <x:String>Documentación</x:String>
+                            </x:Array>
+                        </telerik:RadComboBox.ItemsSource>
+                    </telerik:RadComboBox>
+                </StackLayout>
+
+                <!-- RadDatePicker para seleccionar la fecha -->
+                <StackLayout>
+                    <Label 
+                        Text="Selecciona la fecha limite:" 
+                        TextColor="Green"
+                        FontSize="16"
+                        FontAttributes="Bold"/>
+                    <telerik:RadDatePicker x:Name="datePicker" BackgroundColor="White" />
+                </StackLayout>
+
+                <!-- Editor de detalles de la tarea -->
+                <Label 
+                    Text="Detalles de la tarea:" 
+                    TextColor="Green"
+                    FontSize="16"
+                    FontAttributes="Bold"/>
+                <telerik:RadEntry 
+                    x:Name="DetallesTareaEditor"
+                    Placeholder="Ingresa los detalles de la tarea"
+                    HeightRequest="150"
+                    FontSize="16"
+                    Margin="10"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botones en la segunda fila (fija) -->
+        <Grid Grid.Row="1" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Botón para navegar al Home -->
+            <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="home.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnHomeClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Ir al Home" />
+                <Label Text="Inicio"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón para navegar a Consultar Tareas -->
+            <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="consultar_tarea.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnConsultarTareasClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Consultar tareas" />
+                <Label Text="Consultar Tareas"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón para navegar al Programador -->
+            <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="programador.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnProgramadorClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Ir al Programador" />
+                <Label Text="Programador"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
+

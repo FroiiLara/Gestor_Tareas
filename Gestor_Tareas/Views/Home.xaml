@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="Gestor_Tareas.Views.Home"
+             BackgroundColor="LightGreen"
+             Title="Inicio">
+
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Grid.Row="0" Padding="20" Spacing="20">
+            <Label 
+                Text="Gestor de Tareas"
+                FontSize="55"
+                Margin="5"
+                FontFamily="Comic"
+                TextColor="Blue"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontAttributes="Bold" />
+
+            <!-- Card para mostrar la fecha -->
+            <Label x:Name="FechaLabel"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand" />
+
+            <!-- Imagen del bot -->
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                HorizontalOptions="Center" />
+
+            <!-- Título de la aplicación -->
+            <Label
+                Text="Corporacion Sierra Madre"
+                TextColor="Green"
+                FontSize="20"
+                FontFamily="Santa"
+                FontAttributes="Bold"
+                Margin="5"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </VerticalStackLayout>
+
+        <!-- Botones en la segunda fila -->
+        <HorizontalStackLayout Grid.Row="1"
+                               Padding="10"
+                               Spacing="20" 
+                               Background="White"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="End">
+            
+            <!-- Botón para navegar a la vista de Crear Tarea -->
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="5">
+                <ImageButton
+                    Source="crear_tarea.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnCrearTareaClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Botón para crear una nueva tarea" />
+                    <Label Text="Crear Tarea"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón para navegar a la vista de Consultar Tarea -->
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="5">
+                <ImageButton
+                    Source="consultar_tarea.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnConsultarTareasClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Botón para consultar las tareas" />
+                    <Label Text="Consultar Tareas"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón para navegar a la vista de Programador -->
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="5">
+                <ImageButton
+                    Source="programador.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnProgramadorClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Botón para acceder a la vista del programador" />
+                    <Label Text="Programador"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
+    
+    
+

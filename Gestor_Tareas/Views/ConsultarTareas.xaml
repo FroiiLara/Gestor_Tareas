@@ -1,0 +1,145 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="Gestor_Tareas.Views.ConsultarTareas"
+             BackgroundColor="LightGreen"
+             Title="Consultar Tareas">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- La primera fila es para el contenido desplazable (ScrollView) -->
+            <RowDefinition Height="*" />
+            <!-- La segunda fila es para los botones que estarán fijos en la parte inferior -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Contenido principal de la página dentro del ScrollView -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20">
+                <!-- SearchBar para buscar tareas -->
+                <SearchBar x:Name="TareasSearchBar"
+                           Placeholder="Buscar tarea..."
+                           TextChanged="OnSearchTextChanged"
+                           BackgroundColor="White"
+                           Margin="10"/>
+
+                <!-- Título de la página -->
+                <Label 
+                    Text="Lista de Tareas"
+                    FontSize="55"
+                    TextColor="Blue"
+                    FontFamily="Comic"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+
+                <!-- CollectionView para mostrar las tareas -->
+                <CollectionView x:Name="TareasCollectionView" 
+                                ItemsSource="{Binding TareasFiltradas}"
+                                SelectionMode="None"
+                                Margin="10">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="Gray" Padding="10" Margin="5" CornerRadius="5">
+                                <VerticalStackLayout Spacing="5">
+                                    <!-- Nombre de la tarea -->
+                                    <Label Text="{Binding NombreTarea}" FontSize="20" FontAttributes="Bold"/>
+
+                                    <!-- Persona asignada -->
+                                    <Label Text="{Binding PersonaAsignada}" FontSize="16"/>
+
+                                    <!-- Prioridad -->
+                                    <Label Text="{Binding Prioridad}" FontSize="16" TextColor="Orange"/>
+
+                                    <!-- Estado de la tarea -->
+                                    <Label Text="{Binding Estado}" FontSize="16" TextColor="SteelBlue"/>
+
+                                    <!-- Categoría -->
+                                    <Label Text="{Binding Categoria}" FontSize="16"/>
+
+                                    <!-- Detalles de la tarea -->
+                                    <Label Text="{Binding DetallesTarea}" FontSize="14" LineBreakMode="WordWrap"/>
+
+                                    <!-- Fecha de la tarea -->
+                                    <Label Text="{Binding FechaTarea, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="Gray"/>
+
+                                    <!-- Botón de editar tarea -->
+                                    <telerik:RadButton Text="Editar tarea" 
+                                                       BackgroundColor="Green"
+                                                       TextColor="White"
+                                                       FontSize="18"
+                                                       Command="{Binding BindingContext.EditarTareaCommand, Source={x:Reference TareasCollectionView}}"
+                                                       CommandParameter="{Binding .}"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botones de navegación en la segunda fila (fija en la parte inferior) -->
+        <Grid Grid.Row="1" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Botón Home -->
+            <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="home.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnHomeClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Ir al Home" />
+                <Label Text="Inicio"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón Crear Tarea -->
+            <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="crear_tarea.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnCrearTareaClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Crear tarea" />
+                <Label Text="Crear Tarea"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+
+            <!-- Botón Programador -->
+            <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton 
+                    Source="programador.png"  
+                    BackgroundColor="Transparent"
+                    Padding="10, 5" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnProgramadorClicked"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Ir al Programador" />
+                <Label Text="Programador"
+                       HorizontalOptions="Center"
+                       TextColor="Green"
+                       FontSize="14" />
+            </StackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>
+
+
+
+

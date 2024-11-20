@@ -1,0 +1,87 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestor_Tareas.Views.Programador"
+             BackgroundColor="LightGreen"
+             Title="Programador">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Fila 0: Contenido de la página (Scheduler) -->
+            <RowDefinition Height="*" />
+            <!-- Fila 1: Botones -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Grid.Row="0" Padding="20" Spacing="20">
+            <!-- Título de la página -->
+            <Label 
+                Text="Programador"
+                VerticalOptions="Center" 
+                TextColor="Blue"
+                FontAttributes="Bold"
+                FontSize="55"
+                FontFamily="Comic"
+                Margin="10"
+                HorizontalOptions="Center" />
+
+            <!-- Scheduler de tareas -->
+            <telerik:RadScheduler x:Name="scheduler" AppointmentsSource="{Binding AppointmentsSource}" BackgroundColor="White" Padding="5">
+                <telerik:RadScheduler.ViewDefinitions>
+                    <telerik:DayViewDefinition />
+                    <telerik:MultidayViewDefinition VisibleDays="3" Title="3 Day" />
+                    <telerik:WeekViewDefinition Title="Work Week" IsWeekendVisible="False" />
+                    <telerik:WeekViewDefinition />
+                    <telerik:MonthViewDefinition />
+                </telerik:RadScheduler.ViewDefinitions>
+            </telerik:RadScheduler>
+        </VerticalStackLayout>
+
+        <!-- Fila 1: Botones de navegación -->
+        <Grid Grid.Row="1" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Botón Home -->
+            <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="home.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnHomeClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Inicio" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+
+            <!-- Botón Crear Tarea -->
+            <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="crear_tarea.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnCrearTareaClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Crear Tarea" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+
+            <!-- Botón Consultar Tareas -->
+            <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+                <ImageButton Source="consultar_tarea.png"  
+                             BackgroundColor="Transparent"
+                             Padding="10, 5" 
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="OnConsultarTareasClicked"
+                             Aspect="AspectFit"/>
+                <Label Text="Consultar Tareas" HorizontalOptions="Center" TextColor="Green" FontSize="12"/>
+            </StackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>
+
